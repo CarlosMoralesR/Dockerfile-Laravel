@@ -7,7 +7,7 @@ COPY . /var/www/html
 # Instala dependencias de PHP y Apache
 RUN apt-get update && \
     apt-get install -y libpq-dev && \
-    docker-php-ext-install pdo pdo_pgsql && \
+    docker-php-ext-install pdo && \
     a2enmod rewrite
 
 # Configura el servidor Apache
