@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                bat 'cd Tarea6Dockerfile && composer install && php artisan test'
+                bat 'cd Tarea6Dockerfile && composer install && php artisan key:generate && php artisan test'
             }
         }
         stage('Build Docker Image') {
