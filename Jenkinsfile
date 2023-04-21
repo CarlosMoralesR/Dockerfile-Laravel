@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     def tag = "${env.GIT_BRANCH}-${env.BUILD_NUMBER}"
-                    sh "docker build -t sicei:${tag} ."
+                    sh "cd Tarea6Dockerfile && docker build -t sicei:${tag} ."
                 }
             }
         }
