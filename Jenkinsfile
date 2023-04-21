@@ -6,11 +6,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/CarlosMoralesR/Dockerfile-Laravel.git'
             }
         }
-        stage('Create .env file') {
-            steps {
-                bat 'copy .env.example .env'
-            }
-        }
         stage('Build and Test') {
             steps {
                 bat 'cd Tarea6Dockerfile && composer install && php artisan key:generate && php artisan test'
