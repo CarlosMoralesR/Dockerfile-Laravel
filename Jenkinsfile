@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Create .env file') {
             steps {
-                bat 'cp .env.example .env'
+                bat 'copy .env.example .env'
             }
         }
         stage('Build and Test') {
