@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    bat "docker stop \$(docker ps -q)"
+                    bat "docker stop \$(docker ps -aq)"
                     bat "docker run --name sicei-app-%BUILD_NUMBER% -d -p 8888:80 sicei-%GIT_BRANCH%:1.0.0-%BUILD_NUMBER%"
                 }
             }
