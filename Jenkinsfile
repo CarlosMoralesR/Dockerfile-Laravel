@@ -8,14 +8,14 @@ pipeline {
         }
         stage('Build and Test') {
             steps {
-                sh 'cd Tarea6Dockerfile && composer install && start /b php -S localhost:8000 -t public'
+                bat 'cd Tarea6Dockerfile && composer install && php artisan test'
             }
         }
         stage('Build Docker Image') {
             steps {
                 script {
                     def tag = "${env.GIT_BRANCH}-${env.BUILD_NUMBER}"
-                    sh "docker build -t sicei:${tag} ."
+                    bat "docker build -t sicei:${tag} ."
                 }
             }
         }
@@ -23,8 +23,8 @@ pipeline {
             steps {
                 script {
                     def tag = "${env.GIT_BRANCH}-${env.BUILD_NUMBER}"
-                    sh "docker stop sicei-app || true && docker rm sicei-app || true"
-                    sh "docker run --name sicei-app -d -p 8888:80 sicei:${tag}"
+                    bat "docker stop sicei-app || true && docker rm sicei-app || true"
+                    bat "docker run --name sicei-app -d -p 8888:80 sicei:${tag}"
                 }
             }
         }
