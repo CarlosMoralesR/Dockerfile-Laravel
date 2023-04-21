@@ -21,10 +21,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    powershell {
-                        bat "docker stop sicei-app-\$env:BUILD_NUMBER-1"
-                        bat "docker run --name sicei-app-%BUILD_NUMBER% -d -p 8888:80 sicei-%GIT_BRANCH%:1.0.0-%BUILD_NUMBER%"
-                    }
+                    bat "docker stop sicei-app-\$env:BUILD_NUMBER-1"
+                    bat "docker run --name sicei-app-%BUILD_NUMBER% -d -p 8888:80 sicei-%GIT_BRANCH%:1.0.0-%BUILD_NUMBER%"
                 }
             }
         }
