@@ -22,8 +22,8 @@ pipeline {
             steps {
                 script {
                     def tag = "${env.GIT_BRANCH}-${env.BUILD_NUMBER}"
-                    bat "docker stop sicei-app || true && docker rm sicei-app || true"
-                    bat "docker run --name sicei-app -d -p 8888:80 sicei:${tag}"
+                    bat "docker stop sicei-app-container || true && docker rm sicei-app-container || true"
+                    bat "docker run --name sicei-app-container -d -p 8888:80 sicei:${tag}"
                 }
             }
         }
